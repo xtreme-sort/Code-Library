@@ -56,43 +56,43 @@ void array_output(const T_vector &v, bool add_one = false, int start = -1, int e
 
 void solve(){
     int N,M;
-    cin>>N>>M;
+    cin >> N >> M;
 
     vector<string> grid(N);
 
     for(auto &a : grid){
-        cin>>a;
+        cin >> a;
     }
 
-    vector<vector<bool>> vis(N,vector<bool>(M,false));
+    vector<vector<bool>> vis(N, vector<bool>(M, false));
 
-    function<void(int,int)> dfs = [&] (int i,int j) {
-        if(i<0 or i>N-1) return;
-        if(j<0 or j>M-1) return;
-        if(grid[i][j]=='#') return;
+    function<void(int, int)> dfs = [&] (int i, int j) {
+        if(i < 0 or i > N-1) return;
+        if(j < 0 or j > M-1) return;
+        if(grid[i][j] == '#') return;
         if(vis[i][j]) return;
         
         vis[i][j] = true;
-        dfs(i+1,j);
-        dfs(i-1,j);
-        dfs(i,j+1);
-        dfs(i,j-1);
+        dfs(i + 1, j);
+        dfs(i - 1, j);
+        dfs(i, j + 1);
+        dfs(i, j - 1);
     };
 
 
-    int count=0;
+    int count = 0;
 
-    for(int i=0;i<N;i++){
-        for(int j=0;j<M;j++){
-            if(grid[i][j]=='.'){
+    for(int i = 0 ; i < N ; i++){
+        for(int j = 0 ; j < M ; j++){
+            if(grid[i][j] == '.'){
                 if(vis[i][j]) continue;
-                dfs(i,j);
+                dfs(i, j);
                 count++;
             }
         }
     }
 
-    cout<<count<<endl;
+    cout << count << endl;
 }
 
 int main() {
