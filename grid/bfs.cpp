@@ -61,9 +61,9 @@ void solve(){
     vector<string> grid(N);
     pair<int, int> start, end;
     
-    for (int i = 0; i < N; i++) {
+    for(int i = 0; i < N; i++){
         cin >> grid[i];
-        for (int j = 0; j < M; j++) {
+        for(int j = 0; j < M; j++){
             if (grid[i][j] == 'A') start = {i, j};
             if (grid[i][j] == 'B') end = {i, j};
         }
@@ -82,20 +82,20 @@ void solve(){
     vis[start.first][start.second] = true;
     
     bool found = false;
-    while (!q.empty()) {
+    while(!q.empty()){
         auto cur = q.front();
         q.pop();
 
         int cur_i = cur.first, cur_j = cur.second;
 
-        if (cur_i == end.first && cur_j == end.second) {
+        if(cur_i == end.first && cur_j == end.second){
             found = true;
             break;
         }
 
-        for (int d = 0; d < 4; d++) {
+        for(int d = 0; d < 4; d++){
             int ni = cur_i + dx[d], nj = cur_j + dy[d];
-            if (ni >= 0 && ni < N && nj >= 0 && nj < M && !vis[ni][nj] && grid[ni][nj] != '#') {
+            if(ni >= 0 && ni < N && nj >= 0 && nj < M && !vis[ni][nj] && grid[ni][nj] != '#'){
                 q.push({ni, nj});
                 vis[ni][nj] = true;
                 parent[ni][nj] = {cur_i, cur_j};
@@ -104,16 +104,17 @@ void solve(){
         }
     }
 
-    if (found) {
+    if(found){
         string path;
         pair<int, int> cur = end;
-        while (cur != start) {
+        while(cur != start){
             path += direction[cur.first][cur.second];
             cur = parent[cur.first][cur.second];
         }
         reverse(path.begin(), path.end());
         cout << "YES\n" << path.size() << "\n" << path << endl;
-    } else {
+    } 
+    else{
         cout << "NO\n";
     }
 }
