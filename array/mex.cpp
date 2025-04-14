@@ -20,17 +20,19 @@ int main(){
     auto MEX = [&](vector<int> V) -> int {
         sort(V.begin(), V.end());
         
+        // If you want positive-mex then change mex to 1
         int mex = 0;
-        for(int i = 0 ; i < N ; i++){
+        int M = V.size();
+        for(int i = 0 ; i < M ; i++){
             if(V[i] == mex) mex++;
             else if(i > 0 and V[i] == V[i-1]) continue;
-            else return i;
+            else return mex;
         }
 
         return mex;
     };
 
-    cout<<MEX(V)<<endl;
+    cout << MEX(V) << endl;
     
     return 0;
 }
