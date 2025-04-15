@@ -4,7 +4,7 @@ using namespace std;
 #define int int64_t
 #define endl '\n'
 
-// This gives lexicographically loweest topological sort
+// This gives lexicographically lowest topological sort
 
 void solve() {
     int N, M;
