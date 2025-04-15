@@ -7,6 +7,7 @@ class union_find{
         vector<int> parent;
         vector<int> size;
         int components = 0;
+        int mx_sz = 0;
     
     public:
         union_find(int n){
@@ -17,7 +18,7 @@ class union_find{
         void init(int n){
             parent.resize(n);
             iota(parent.begin(),parent.end(),0);
-            size.assign(n,1);
+            size.assign(n, 1);
             components = n;
         }
         
@@ -42,6 +43,7 @@ class union_find{
                 swap(x,y);
 
             size[x] += size[y];
+            mx_sz = max(mx_sz, size[x]);
             parent[y] = x;
             components--;
             return true;
@@ -49,6 +51,9 @@ class union_find{
 
         int num_components(){
             return components;
+        }
+        int max_size(){
+            return mx_sz;
         }
 
 };
