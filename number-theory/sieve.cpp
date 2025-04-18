@@ -4,7 +4,7 @@ using namespace std;
 bool prime[15000105];
 
 void sieve(int n) { 
-	for (int i = 0; i <= n; i++) prime[i] = 1;
+	for (int i = 0; i <= n; i++) prime[i] = true;
 
 	for (int p = 2; p * p <= n; p++) { 
 	if (prime[p] == true) { 
