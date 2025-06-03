@@ -29,11 +29,11 @@ class FenwickTree{
         }
 
         int rsq(int a, int b){
-            return rsq(b) - rsq(a-1);
+            return rsq(b) - rsq(a - 1);
         }
 
         void update(int k, int x){
-            while(k <= N){
+            while(k < N){
                 tree[k] += x;
                 k += k&-k;
             }
@@ -41,7 +41,7 @@ class FenwickTree{
 
         void build(vector<int> &V){
             for(int i = 1 ; i <= V.size() ; i++){
-                this->update(i , V[i-1]);
+                this->update(i , V[i - 1]);
             }
         }
 
