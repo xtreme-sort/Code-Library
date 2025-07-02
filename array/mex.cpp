@@ -25,7 +25,7 @@ int main(){
         int M = V.size();
         for(int i = 0 ; i < M ; i++){
             if(V[i] == mex) mex++;
-            else if(i > 0 and V[i] == V[i-1]) continue;
+            else if(i > 0 and V[i] == V[i - 1]) continue;
             else return mex;
         }
 
