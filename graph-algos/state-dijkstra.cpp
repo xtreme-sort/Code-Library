@@ -49,8 +49,8 @@ void solve() {
                 pq.push({dist[v][used], v, used});
             }
 
-            if(used == 0 and dist[v][1] > dist[u][0] + w){
-                dist[v][1] = dist[u][0] + w;
+            if(used == 0 and dist[v][1] > dist[u][0] + w/2){
+                dist[v][1] = dist[u][0] + w/2;
                 pq.push({dist[v][1], v, 1});
             }
         }
